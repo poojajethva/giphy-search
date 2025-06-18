@@ -36,7 +36,7 @@ function App() {
       {error && isInitial && <p className="container info-text">{error}</p>}
 
       {!loading && isInitial && !error && !showImages && (
-        <p className="container">No giphy found.</p>
+        <p className="container info-text">No giphy found.</p>
       )}
 
       {showImages && (
