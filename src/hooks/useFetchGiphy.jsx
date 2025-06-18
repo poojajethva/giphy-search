@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import constants from "../utilities/constants";
 
-function useFetchGiphy({category = constants.TRENDING, pagination = 0, query = "", limit = 25 }) {
+function useFetchGiphy({category = constants.TRENDING, pagination = 0, query = "", limit = constants.LIMIT }) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,11 +12,11 @@ function useFetchGiphy({category = constants.TRENDING, pagination = 0, query = "
       setLoading(false);
       return;
     }
-    
+
     const fetchGifs = async () => {
       setLoading(true);
       try {
-        const URL = `https://api.giphy.com/v1/gifs/${category}?api_key=${constants.KEY}&q=${query}&limit=${limit}&offset=${pagination * limit + 1}&rating=g&lang=en&bundle=messaging_non_clips`;
+        const URL = `https://api.giphy.com/v1/gifs/${category}?api_key=${constants.KEY}&q=${query}&limit=${limit}&offset=${pagination * limit}&rating=g&lang=en&bundle=messaging_non_clips`;
         const response = await fetch(URL);
 
         if (!response.ok) {
