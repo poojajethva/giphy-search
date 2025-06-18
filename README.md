@@ -1,1 +1,1 @@
-# giphy-search
+# Giphy Search
