@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Image from "./Image";
-function ImageList({ data, pagination, loading }) {
+import constants from "../utilities/constants";
+
+function ImageList({ data, pagination, loading, totalCount, handleButtonClick }) {
   const [imageData, setImageData] = useState([]);
 
   useEffect(() => {
@@ -20,8 +22,10 @@ function ImageList({ data, pagination, loading }) {
     }
   }, [data, pagination]);
 
+  const canLoadMore = imageData?.length + pagination * constants.LIMIT < totalCount;
+
   return (
-    <>
+    <div className="container">
       <div className="grid-container">
         {imageData?.map((gif) => (
           <Image
@@ -36,7 +40,16 @@ function ImageList({ data, pagination, loading }) {
           <span className="loader"></span>
         </div>
       )}
-    </>
+      {canLoadMore && (
+        <button
+          className="load-more"
+          onClick={handleButtonClick}
+          disabled={loading}
+        >
+          {loading ? "Loading..." : "Load More"}
+        </button>
+      )}
+    </div>
   );
 }
 

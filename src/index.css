@@ -9,17 +9,32 @@ body {
   font-size: 14px;
 }
 .container {
-  padding: 10px;
+  padding: 0 10px;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
 }
 header {
   margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  background-color: black;
+  z-index: 1000;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
-.logo {
+.logo-container {
   color: white;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.logo{
+  width: 30px;
+  margin-right: 10px;
+}
+.searchbox-wrapper{
+  position: relative;
 }
 .searchbox {
   display: flex;
@@ -60,7 +75,6 @@ header {
   margin-bottom: 1rem;
   border-radius: 8px;
   overflow: hidden;
-  break-inside: avoid;
 }
 
 .grid-item {
@@ -131,4 +145,36 @@ header {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.info-text{
+  text-align: center;
+  color: white;
+  font-size: 22px;
+}
+
+.autocomplete {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  color: black;
+  list-style: none;
+  padding: 0;
+  margin: 2px 0 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.autocomplete li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autocomplete li:hover {
+  background: #f0f0f0;
 }
